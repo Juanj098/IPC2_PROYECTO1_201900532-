@@ -1,0 +1,18 @@
+print("<------------------------------------>")
+print("1. ingresar documento"                 )
+print("2. Ver muestras                       ")
+print("3. Ingresar organismo"                 )
+print("4. Salir"                              )
+print("<------------------------------------>")
+opc = input("Ingrese opcion:")
+
+if opc == "1":
+    pass
+elif opc =="2":
+    pass
+elif opc =="3":
+    pass
+elif opc =="4":
+    pass
+else:
+    print("opcion no disponible :)")

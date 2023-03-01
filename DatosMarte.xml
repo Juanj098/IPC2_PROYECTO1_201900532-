@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<datosMarte> 
+    <listaOrganismos>
+        <organismo> 
+            <codigo>OA</codigo>
+            <nombre>A</nombre>
+        </organismo>
+        <organismo> 
+            <codigo>OB</codigo>
+            <nombre>B</nombre>
+        </organismo>
+        <organismo> 
+            <codigo>OC</codigo>
+            <nombre>C</nombre>
+        </organismo>
+        <organismo> 
+            <codigo>OD</codigo>
+            <nombre>D</nombre>
+        </organismo>
+    </listaOrganismos> 
+    <listadoMuestras> 
+        <muestra> 
+            <codigo>muestra_1</codigo> 
+            <descripcion>muestra_1</descripcion> 
+            <filas>100</filas> 
+            <columnas>100</columnas> 
+            <listadoCeldasVivas>
+                <celdaViva>
+                    <fila>25</fila> 
+                    <columna>30</columna> 
+                    <codigoOrganismo>OA</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>80</fila> 
+                    <columna>15</columna> 
+                    <codigoOrganismo>OD</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>6</fila> 
+                    <columna>6</columna> 
+                    <codigoOrganismo>OC</codigoOrganismo> 
+                </celdaViva>
+            </listadoCeldasVivas>
+        </muestra>
+    </listadoMuestras>
+</datosMarte>
