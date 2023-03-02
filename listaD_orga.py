@@ -1,10 +1,10 @@
 class Nodo():
-    def __init__(self, dato):
+    def __init__(self, dato, sig = None, ant = None):
         self.dato = dato
-        self.sig = None
-        self.ant = None
+        self.sig = sig
+        self.ant = ant
 
-class listaD_muestras():
+class listaDa_orga(object):
     def __init__(self) :
         self.primero = None
         self.ultimo = None
@@ -13,57 +13,23 @@ class listaD_muestras():
     def vacia(self):
         return self.primero == None
     
-    def agregarF(self, dato):
-        if self.vacia():
-            self.primero = self.ultimo = Nodo(dato)
-        else:
-            aux = self.ultimo
-            self.ultimo = aux.sig = Nodo(dato)
-            self.ultimo.ant == aux
-        self.len += 1 
+    def agregarF(self,dato):
+        nodo = Nodo(dato)
+        if self.primero is None:
+            self.primero = nodo
+            self.ultimo = nodo
+        else: 
+            nodo.ant = self.ultimo
+            self.ultimo.sig = nodo
+            self.ultimo = nodo
+        self.len+=1
     
-    def agregarI(self, dato):
-        if self.vacia():
-            self.primero= self.ultimo = Nodo(dato)
-        else:
-            aux = Nodo(dato)
-            aux.sig = self.primero
-            self.primero.ant = None
-            self.primero = aux
-        self.len += 1
-    
-    def recorrer_ini(self):
-        aux = self.primero
-        while aux != None:
-            print(aux.dato)
-            aux = aux.sig
-    
-    def recorrer_fin(self):
-        aux = self.ultimo
-        while aux != None:
-            print(aux.dato)
-            aux = aux.ant 
-    
-    def size(self):
-        return self.len
+    def iterar(self):
+        actual = self.primero
+        while actual:
+            dato = actual.dato
+            actual = actual.sig
+            yield dato
 
-    def eliminar_ini(self):
-        if self.vacia():
-            print("lista vacia")
-        elif self.primero.sig == None:
-            self.primero = self.ultimo = None
-            self.len = 0
-        else:
-            self.primero = self.primero.sig
-            self.primero.ant = None
-            self.size -= 1
-    def eliminar_fin(self):
-        if self.vacia():
-            print("lista vacia")
-        elif self.ultimo.sig == None:
-            self.primero = self.ultimo = None
-            self.len = 0
-        else:
-            self.ultimo = self.ultimo.ant
-            self.ultimo.sig = None
-            self.len -= 1
+    def testfunc(self):
+        return("esto es un test")

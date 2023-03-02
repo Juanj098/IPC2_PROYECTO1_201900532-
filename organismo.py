@@ -4,7 +4,7 @@ class organismos():
         self.nam = nam
 
     def __str__(self):
-        return f"codigo de organismo -> {self.codi}; nombre de organismo -> {self.nam}"
+        return f"{self.codi}; {self.nam}"
 
 
 class muestras():

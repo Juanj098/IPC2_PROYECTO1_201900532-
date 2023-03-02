@@ -1,12 +1,24 @@
 import xml.sax
 from organismo import organismos
 from organismo import muestras
+from listaD_orga import listaDa_orga
+#listas
+from list_A import listaDoble_Aposx
+from list_A import listaDoble_Aposy
+from list_B import listaDoble_Bposx
+from list_B import listaDoble_Bposy
+from list_C import listaDoble_Cposx
+from list_C import listaDoble_Cposy
 
 Doc = "DatosMarte.xml"
-    
- 
-listorg=[]
-listmuestras=[]
+
+lista_dobleOrga = listaDa_orga()    
+Ax = listaDoble_Aposx()
+Ay = listaDoble_Aposy()
+Bx = listaDoble_Bposx()
+By = listaDoble_Bposy()
+Cx = listaDoble_Cposx()
+Cy = listaDoble_Cposy()
 class orga(xml.sax.ContentHandler):
     def __init__(self):
         self.current = ""
@@ -32,12 +44,12 @@ class orga(xml.sax.ContentHandler):
     def startElement(self, tag, attrs):
         self.current = tag
         if tag == "listaOrganismos":
-            print(f"--listado organismo--")
+            self.listaorganismos = lista_dobleOrga
            
 
         elif tag == "listadoCeldasVivas":
             print(f"--celdas vivas--")
-           
+            
 
     def characters(self, content):
         if self.current == "codigo":
@@ -60,17 +72,29 @@ class orga(xml.sax.ContentHandler):
     def endElement(self, tag):
         if tag == "organismo":
             orga=organismos(self.codigo,self.name)
-            listorg.append(orga)
+            self.listaorganismos.agregarF(orga)
         elif tag == "muestra":
             print(f"--listado Muestras--")
-            print("<----------------->")
             print(f"codigo: {self.codigo}")
             print(f"descripcion: {self.descrip}")
             print(f"filas: {self.fil}")
             print(f"columnas: {self.col}")
         elif tag == "celdaViva":
+            if self.codOrg == "OA":
+                print(f"codigo organismo: {self.codOrg}")
+                Ax.agregar(self.posx)
+                Ay.agregar(self.posy)
+            elif self.codOrg == "OB":
+                print(f"codigo organismo: {self.codOrg}") 
+                Bx.agregar(self.posx)
+                By.agregar(self.posy) 
+            elif self.codOrg == "OC":
+                print(f"codigo organismo: {self.codOrg}")
+                Cx.agregar(self.posx)
+                Cy.agregar(self.posy)
+            elif self.codOrg == "OD":
+                print(f"codigo organismo: {self.codOrg}")              
             mues = muestras(self.codOrg, self.posx, self.posy)
-            listmuestras.append(mues)
         self.current = ""
   
 handler = orga()
@@ -78,13 +102,41 @@ parser = xml.sax.make_parser()
 parser.setContentHandler(handler)
 parser.parse(Doc)
 
-for organism in listorg:
-    print(organism.__str__()) 
-    print("-------------------")
+print("-------------------")
+for x in Ax.iterar():
+    print(f"x -> {x}")
 
-for muestra in listmuestras:
-    print(muestra.__str__())
-    print("-------------------")
+for y in Ay.iterar():
+    print(f"y -> {y}")
+    
+for xy in range(Ay.leng()):
+    print(Ay.leng(), " ; " , Ax.leng(), " ; ", xy)
+    print(f"x -> {Ax.__getItemAx__(xy)}, y -> {Ay.__getItemAy__(xy)}")
+
+# print(f"x -> {Ax.__getItemAx__(0)}, y -> {Ay.__getItemAy__(0)}")
+# print(f"x -> {Ax.__getItemAx__(1)}, y -> {Ay.__getItemAy__(1)}")
+
+print(Ay.leng(), " :" , Ax.leng())
+
+print("-------------------")
+
+for x in Bx.iterar():
+    print(f"x -> {x}")
+
+for y in By.iterar():
+    print(f"y -> {y}")
+print("-------------------")
+
+print("-------------------")
+for x in Cx.iterar():
+    print(f"x -> {x}")
+
+for y in Cy.iterar():
+    print(f"y -> {y}")
+
+print("-------------------")
+
+
 
 
 
