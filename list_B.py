@@ -30,6 +30,17 @@ class listaDoble_Bposx(object):
             actual = actual.sig
             yield dato
 
+    def Leng(self):
+        return self.len
+    
+    def __getItemBx__(self,indice):
+        if indice >= 0 and indice < self.len:
+            actual = self.primero
+            for _ in range(indice):
+                actual = actual.sig
+            return actual.dato 
+        else:
+            print("indice no valido")
 class listaDoble_Bposy(object):
    
     def __init__(self):
@@ -54,3 +65,15 @@ class listaDoble_Bposy(object):
             dato = actual.dato
             actual = actual.sig
             yield dato
+        
+    def Leng(self):
+        return self.len
+
+    def __getItemBY__(self,indice):
+        if indice >= 0 and indice < self.len:
+            actual = self.primero
+            for _ in range(indice):
+                actual = actual.sig
+            return actual.dato 
+        else:
+            print("indice no valido")

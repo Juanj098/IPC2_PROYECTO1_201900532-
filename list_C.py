@@ -30,6 +30,18 @@ class listaDoble_Cposx(object):
             actual = actual.sig
             yield dato
 
+    def leng(self):
+        return self.len
+
+    def __getItemCx__(self,indice):
+        if indice >= 0 and indice < self.len:
+            actual = self.primero
+            for _ in range(indice):
+                actual = actual.sig
+            return actual.dato 
+        else:
+            print("indice no valido")
+
 class listaDoble_Cposy(object):
    
     def __init__(self):
@@ -54,3 +66,15 @@ class listaDoble_Cposy(object):
             dato = actual.dato
             actual = actual.sig
             yield dato
+
+    def leng(self):
+        return self.len
+
+    def __getItemCy__(self,indice):
+        if indice >= 0 and indice < self.len:
+            actual = self.primero
+            for _ in range(indice):
+                actual = actual.sig
+            return actual.dato 
+        else:
+            print("indice no valido")

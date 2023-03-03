@@ -1,4 +1,6 @@
 import xml.sax
+import os
+
 from organismo import organismos
 from organismo import muestras
 from listaD_orga import listaDa_orga
@@ -9,8 +11,10 @@ from list_B import listaDoble_Bposx
 from list_B import listaDoble_Bposy
 from list_C import listaDoble_Cposx
 from list_C import listaDoble_Cposy
+from list_D import listaDoble_Dposx
+from list_D import listaDoble_Dposy
 
-Doc = "DatosMarte.xml"
+Doc = ""
 
 lista_dobleOrga = listaDa_orga()    
 Ax = listaDoble_Aposx()
@@ -19,6 +23,8 @@ Bx = listaDoble_Bposx()
 By = listaDoble_Bposy()
 Cx = listaDoble_Cposx()
 Cy = listaDoble_Cposy()
+Dx = listaDoble_Dposx()
+Dy = listaDoble_Dposy()
 class orga(xml.sax.ContentHandler):
     def __init__(self):
         self.current = ""
@@ -46,7 +52,6 @@ class orga(xml.sax.ContentHandler):
         if tag == "listaOrganismos":
             self.listaorganismos = lista_dobleOrga
            
-
         elif tag == "listadoCeldasVivas":
             print(f"--celdas vivas--")
             
@@ -81,63 +86,55 @@ class orga(xml.sax.ContentHandler):
             print(f"columnas: {self.col}")
         elif tag == "celdaViva":
             if self.codOrg == "OA":
-                print(f"codigo organismo: {self.codOrg}")
                 Ax.agregar(self.posx)
                 Ay.agregar(self.posy)
             elif self.codOrg == "OB":
-                print(f"codigo organismo: {self.codOrg}") 
                 Bx.agregar(self.posx)
                 By.agregar(self.posy) 
             elif self.codOrg == "OC":
-                print(f"codigo organismo: {self.codOrg}")
                 Cx.agregar(self.posx)
                 Cy.agregar(self.posy)
             elif self.codOrg == "OD":
-                print(f"codigo organismo: {self.codOrg}")              
+                Dx.agregar(self.posx)
+                Dy.agregar(self.posy)
             mues = muestras(self.codOrg, self.posx, self.posy)
         self.current = ""
   
-handler = orga()
-parser = xml.sax.make_parser()
-parser.setContentHandler(handler)
-parser.parse(Doc)
 
-print("-------------------")
-for x in Ax.iterar():
-    print(f"x -> {x}")
-
-for y in Ay.iterar():
-    print(f"y -> {y}")
-    
-for xy in range(Ay.leng()):
-    print(Ay.leng(), " ; " , Ax.leng(), " ; ", xy)
-    print(f"x -> {Ax.__getItemAx__(xy)}, y -> {Ay.__getItemAy__(xy)}")
-
-# print(f"x -> {Ax.__getItemAx__(0)}, y -> {Ay.__getItemAy__(0)}")
-# print(f"x -> {Ax.__getItemAx__(1)}, y -> {Ay.__getItemAy__(1)}")
-
-print(Ay.leng(), " :" , Ax.leng())
-
-print("-------------------")
-
-for x in Bx.iterar():
-    print(f"x -> {x}")
-
-for y in By.iterar():
-    print(f"y -> {y}")
-print("-------------------")
-
-print("-------------------")
-for x in Cx.iterar():
-    print(f"x -> {x}")
-
-for y in Cy.iterar():
-    print(f"y -> {y}")
-
-print("-------------------")
-
-
-
+print("<------------------------------------>")
+print("1. ingresar documento"                 )
+print("2. Ver muestras                       ")
+print("3. Ingresar organismo"                 )
+print("4. Salir"                              )
+print("<------------------------------------>")
+opc = input("Ingrese opcion:")
+while opc != "4":
+    if opc == "1":
+        Doc = input("Ingrese Documento -> ")
+        handler = orga()
+        parser = xml.sax.make_parser()
+        parser.setContentHandler(handler)
+        parser.parse(Doc)
+    elif opc =="2":
+        cadena = '''
+            digraph G{
+            node [shape = plaintext];
+            rankdir=LR;\n\n
+        '''
+        print(cadena)
+    elif opc =="3":
+        pass
+    elif opc =="4":
+        pass
+    else:
+        print("opcion no disponible :)")
+    print("<------------------------------------>")
+    print("1. ingresar documento"                 )
+    print("2. Ver muestras                       ")
+    print("3. Ingresar organismo"                 )
+    print("4. Salir"                              )
+    print("<------------------------------------>")
+    opc = input("Ingrese opcion:")    
 
 
 
