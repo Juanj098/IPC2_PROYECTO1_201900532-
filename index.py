@@ -1,30 +1,20 @@
 import xml.sax
 import os
 
+os.system('cls')
+
 from organismo import organismos
-from organismo import muestras
+from organismo import matrix
 from listaD_orga import listaDa_orga
-#listas
-from list_A import listaDoble_Aposx
-from list_A import listaDoble_Aposy
-from list_B import listaDoble_Bposx
-from list_B import listaDoble_Bposy
-from list_C import listaDoble_Cposx
-from list_C import listaDoble_Cposy
-from list_D import listaDoble_Dposx
-from list_D import listaDoble_Dposy
+from Matriz import matriz
+
+
 
 Doc = ""
-
+xy = {}
 lista_dobleOrga = listaDa_orga()    
-Ax = listaDoble_Aposx()
-Ay = listaDoble_Aposy()
-Bx = listaDoble_Bposx()
-By = listaDoble_Bposy()
-Cx = listaDoble_Cposx()
-Cy = listaDoble_Cposy()
-Dx = listaDoble_Dposx()
-Dy = listaDoble_Dposy()
+matriz = matriz()
+datosM = matrix
 class orga(xml.sax.ContentHandler):
     def __init__(self):
         self.current = ""
@@ -82,22 +72,11 @@ class orga(xml.sax.ContentHandler):
             print(f"--listado Muestras--")
             print(f"codigo: {self.codigo}")
             print(f"descripcion: {self.descrip}")
-            print(f"filas: {self.fil}")
-            print(f"columnas: {self.col}")
+            datx = matrix(self.fil, self.col)
+            xy["x"] = self.fil
+            xy["y"] = self.col
         elif tag == "celdaViva":
-            if self.codOrg == "OA":
-                Ax.agregar(self.posx)
-                Ay.agregar(self.posy)
-            elif self.codOrg == "OB":
-                Bx.agregar(self.posx)
-                By.agregar(self.posy) 
-            elif self.codOrg == "OC":
-                Cx.agregar(self.posx)
-                Cy.agregar(self.posy)
-            elif self.codOrg == "OD":
-                Dx.agregar(self.posx)
-                Dy.agregar(self.posy)
-            mues = muestras(self.codOrg, self.posx, self.posy)
+            matriz.insertar(self.posx, self.posy, self.codOrg)
         self.current = ""
   
 
@@ -105,26 +84,27 @@ print("<------------------------------------>")
 print("1. ingresar documento"                 )
 print("2. Ver muestras                       ")
 print("3. Ingresar organismo"                 )
-print("4. Salir"                              )
+print("4. Analisis muestra"                   )
+print("5. Salir"                              )
 print("<------------------------------------>")
 opc = input("Ingrese opcion:")
-while opc != "4":
-    if opc == "1":
+os.system('cls')
+
+while opc != "5":
+    if opc == "1": #ingresar Doc
         Doc = input("Ingrese Documento -> ")
         handler = orga()
         parser = xml.sax.make_parser()
         parser.setContentHandler(handler)
         parser.parse(Doc)
-    elif opc =="2":
-        cadena = '''
-            digraph G{
-            node [shape = plaintext];
-            rankdir=LR;\n\n
-        '''
-        print(cadena)
-    elif opc =="3":
+    elif opc =="2": #ver muestras de Doc. forma grafica
+        matriz.recorrer()
+        print(matriz.graficar(int(xy.get("x")),int(xy.get("y"))))
+    elif opc =="3": #ingresar un nuevo organismo
         pass
-    elif opc =="4":
+    elif opc =="4": #Analisis muestras
+        pass
+    elif opc =="5":#salida
         pass
     else:
         print("opcion no disponible :)")
@@ -132,9 +112,11 @@ while opc != "4":
     print("1. ingresar documento"                 )
     print("2. Ver muestras                       ")
     print("3. Ingresar organismo"                 )
-    print("4. Salir"                              )
+    print("4. Analisis muestra"                   )
+    print("5. Salir"                              )
     print("<------------------------------------>")
     opc = input("Ingrese opcion:")    
+    os.system('cls')
 
 
 

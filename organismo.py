@@ -1,4 +1,4 @@
-class organismos():
+class organismos:
     def __init__(self, codi, nam):
         self.codi = codi
         self.nam = nam
@@ -7,7 +7,7 @@ class organismos():
         return f"{self.codi}; {self.nam}"
 
 
-class muestras():
+class muestras:
     def __init__(self, code,x,y):
         self.code = code
         self.x = x
@@ -17,3 +17,10 @@ class muestras():
         return f"codigo organismo -> {self.code}; posicion x -> {self.x}; posicion y -> {self.y}"
     
 
+class matrix:
+    def __init__(self, fils, cols) -> None:
+        self.x = fils
+        self.y = cols
+    
+    def retornaX(self,):
+        return self.x

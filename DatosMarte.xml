@@ -22,8 +22,8 @@
         <muestra> 
             <codigo>muestra_1</codigo> 
             <descripcion>muestra_1</descripcion> 
-            <filas>100</filas> 
-            <columnas>100</columnas> 
+            <filas>30</filas> 
+            <columnas>30</columnas> 
             <listadoCeldasVivas>
                 <celdaViva>
                     <fila>25</fila> 
@@ -36,7 +36,7 @@
                     <codigoOrganismo>OB</codigoOrganismo> 
                 </celdaViva>
                 <celdaViva>
-                    <fila>80</fila> 
+                    <fila>8</fila> 
                     <columna>15</columna> 
                     <codigoOrganismo>OD</codigoOrganismo> 
                 </celdaViva>
