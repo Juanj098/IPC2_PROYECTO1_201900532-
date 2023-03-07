@@ -27,12 +27,17 @@
             <listadoCeldasVivas>
                 <celdaViva>
                     <fila>25</fila> 
-                    <columna>30</columna> 
+                    <columna>22</columna> 
+                    <codigoOrganismo>OA</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>1</fila> 
+                    <columna>1</columna> 
                     <codigoOrganismo>OA</codigoOrganismo> 
                 </celdaViva>
                 <celdaViva>
                     <fila>26</fila> 
-                    <columna>33</columna> 
+                    <columna>29</columna> 
                     <codigoOrganismo>OB</codigoOrganismo> 
                 </celdaViva>
                 <celdaViva>
@@ -47,7 +52,7 @@
                 </celdaViva>
                  <celdaViva>
                     <fila>24</fila> 
-                    <columna>31</columna> 
+                    <columna>3</columna> 
                     <codigoOrganismo>OA</codigoOrganismo> 
                 </celdaViva>
             </listadoCeldasVivas>

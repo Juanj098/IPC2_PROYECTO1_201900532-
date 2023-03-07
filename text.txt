@@ -16,3 +16,63 @@ elif opc =="4":
     pass
 else:
     print("opcion no disponible :)")
+
+
+
+            for y in range(Tcol):
+            cadena +="\t\t<tr>\n"
+            cadena += f"\t\t<td>{str(y+1)}</td>\n"
+            for x in range (Tfil):
+                Bx = self.filas.buscar(x)
+                By = self.columnas.buscar(y)
+                res = self.search(Bx,By)
+                if res != None:
+                    cadena += "\t\t<td>x</td>\n"
+                else:
+                    cadena += "\t\t<td></td>\n"                    
+            cadena +="\t\t</tr>\n"
+
+
+
+            y = 0
+        actual = self.filas.primero
+        while (actual != None) or (y <= Tcol):
+            aux = self.columnas.primero
+            cadena += "<tr>"
+            cadena += f"\t\t<td>{y+1}</td>"
+            y = y + 1
+            x = 0
+            while (aux != None) or (x <= Tfil):
+                if actual and aux != None:
+                    temp = self.search(actual.id, aux.id)
+                    if temp != None:
+                        cadena += f"\t\t<td>x</td>\n"
+                    else:
+                        cadena += "\t\t<td></td>\n"
+                else:
+                    cadena += "\t\t<td></td>\n"
+
+                x = x + 1
+                aux = aux.sig
+            cadena += "</tr>\n"
+            actual = actual.sig
+
+
+        y = 0
+        actual = self.columnas.primero
+        while y < Tcol:
+            cadena += "\t<tr>\n"
+            cadena += f"\t\t<td>{y+1}</td>\n"
+            aux = self.filas.primero
+            x = 0
+            while x < Tfil:
+                temp = self.search(str(x),str(y))
+                if temp != None:
+                    cadena += f"\t\t<td>{temp}</td>\n"
+                else:
+                    cadena += "\t\t<td></td>\n"
+                x = x + 1                
+                aux = aux.sig
+            cadena += "\t</tr>\n"
+            y = y+1
+            actual = actual.sig

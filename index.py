@@ -5,16 +5,19 @@ os.system('cls')
 
 from organismo import organismos
 from organismo import matrix
+from organismo import list_orga
 from listaD_orga import listaDa_orga
 from Matriz import matriz
 
 
-
 Doc = ""
 xy = {}
-lista_dobleOrga = listaDa_orga()    
+colors=["#ffc700","#00d278","#0082f7","#ea449e","#10c7dc","#ff0000","#00854c","#11dcf5","#ffe748","#af8b69","#e8e7f0","#f955ff","#91a7d2","#fb6e42","#eacb7c","#5b3347","#ffa8d2"]
+lista_dobleOrga = listaDa_orga() 
 matriz = matriz()
-datosM = matrix
+datos_orga = organismos
+datosM = matrix 
+
 class orga(xml.sax.ContentHandler):
     def __init__(self):
         self.current = ""
@@ -40,7 +43,7 @@ class orga(xml.sax.ContentHandler):
     def startElement(self, tag, attrs):
         self.current = tag
         if tag == "listaOrganismos":
-            self.listaorganismos = lista_dobleOrga
+            self.listaorganismos = list_orga
            
         elif tag == "listadoCeldasVivas":
             print(f"--celdas vivas--")
@@ -66,8 +69,9 @@ class orga(xml.sax.ContentHandler):
 
     def endElement(self, tag):
         if tag == "organismo":
-            orga=organismos(self.codigo,self.name)
-            self.listaorganismos.agregarF(orga)
+                if self.codigo != None:
+                    orga=organismos(self.codigo,self.name)
+                    self.listaorganismos.append(orga)
         elif tag == "muestra":
             print(f"--listado Muestras--")
             print(f"codigo: {self.codigo}")
@@ -98,10 +102,18 @@ while opc != "5":
         parser.setContentHandler(handler)
         parser.parse(Doc)
     elif opc =="2": #ver muestras de Doc. forma grafica
-        matriz.recorrer()
-        print(matriz.graficar(int(xy.get("x")),int(xy.get("y"))))
+        for r in range(len(list_orga)):
+            list_orga[r].asigColor(colors[r])
+
+        matriz.graficar(int(xy.get("x")),int(xy.get("y")))
+
     elif opc =="3": #ingresar un nuevo organismo
-        pass
+        x = input("x -> ")
+        y = input("y -> ")
+        codi = input("Codig -> ")
+        matriz.insertar(x,y,codi)
+        matriz.graficar(int(xy.get("x")),int(xy.get("y")))
+
     elif opc =="4": #Analisis muestras
         pass
     elif opc =="5":#salida

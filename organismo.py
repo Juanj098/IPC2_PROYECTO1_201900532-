@@ -1,12 +1,25 @@
+list_orga = []
+
 class organismos:
     def __init__(self, codi, nam):
         self.codi = codi
         self.nam = nam
-
+        self.color = None
     def __str__(self):
-        return f"{self.codi}; {self.nam}"
+        return f"{self.codi}; {self.nam}; {self.color}"
 
+    def rec(self):
+        return f"color -> {self.color}, codigo ->{self.codi}"
+    
+    def asigColor(self,color):
+       self.color = color
 
+    def returnColor(self):
+        return self.color
+    
+    def returnCodi(self):
+        return self.codi
+    
 class muestras:
     def __init__(self, code,x,y):
         self.code = code

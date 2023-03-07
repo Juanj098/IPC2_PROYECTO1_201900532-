@@ -1,6 +1,8 @@
 from NodoEncabezado import NodoEncabezado
 from ListaEncabezado import ListaEncabezado
 from NodoInterno import NodoInterno
+from organismo import list_orga
+
 import os
 
 class matriz:
@@ -126,51 +128,57 @@ class matriz:
 
         cadena = ""
         cadena += '''
-        Digraph main {
+        digraph main {
         \tgraph[pad="0.5", nodesep="0.5", ranksep="2"]
         \tnode [shape = plain]
         \trankdir=LR;
         \tMatriz [
         '''
         cadena += "\tlabel=<<table border='0' cellborder='1' cellspacing='0'>\n"
-        cadena += "\t\t<tr>\n"
+        cadena += "\t<tr>\n"
         cadena += "\t\t<td></td>\n"
         actual = self.columnas.primero
-        for x in range(Tfil):
-            if x <= 8:
-                cadena += f"\t\t<td>0{str(x+1)}</td>\n"
+        for x in range(Tfil + 1):
+            if x <= 9:
+                cadena += f"\t\t<td> 0{str(x)} </td>\n"
             else:
-                cadena += f"\t\t<td>{str(x+1)}</td>\n"
-        cadena += "\t\t</tr>\n"
+                cadena += f"\t\t<td> {str(x)} </td>\n"
+        cadena += "\t</tr>\n"
 
-        for y in range(Tcol):
-            cadena +="\t\t<tr>\n"
-            cadena += f"\t\t<td>{str(y+1)}</td>\n"
-            for x in range (Tfil):
-                Bx = self.filas.buscar(x)
-                By = self.columnas.buscar(y)
-                res = self.search(Bx,By)
-                if res != None:
-                    cadena += "\t\t<td>x</td>\n"
+        for y in range(Tcol + 1):
+            cadena += "\t<tr>\n"
+            cadena += f"\t\t<td>{y}</td>\n"
+            for x in range(Tfil + 1):
+                temp = self.search(str(x),str(y))
+                if temp != None:
+                    for z in range(len(list_orga)):
+                        if temp.valor == list_orga[z].returnCodi():
+                            colorss = list_orga[z].returnColor()
+                            cadena += f"\t\t<td bgcolor= '{colorss}'>{temp.valor}</td>\n"
                 else:
-                    cadena += "\t\t<td></td>\n"                    
-            cadena +="\t\t</tr>\n"
-
+                    cadena += "\t\t<td></td>\n"
+            cadena += "\t</tr>\n"           
         cadena += "\t</table>>];\n"
         cadena += "}"
-        return cadena
+        with open('Matriz.dot','w',encoding="utf-8") as docu:
+            docu.write(cadena)
+            docu.close()
+        os.system("dot -Tpng Matriz.dot -o Matriz.png")
+        # return cadena
 
 
     
     def return_Id(self):
         actual = self.filas.primero
         while actual != None:
-            print(actual.id)
+            print(type(actual.id))
             aux = self.columnas.primero
             while aux != None:
-                temp = self.search(actual.id, aux.id)
-                if temp != None:
-                    print("->",temp.valor)
+                # temp = self.search(actual.id, aux.id)
+                # if temp != None:
+                #     print("->",temp.valor)
+                if aux and actual != None:
+                    print(f"-> {actual.id}... -> {aux.id}")
                 aux = aux.sig
             actual = actual.sig
 
