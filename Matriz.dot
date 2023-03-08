@@ -110,6 +110,17 @@
 	<tr>
 		<td>2</td>
 		<td></td>
+		<td bgcolor= '#ffc700'>OA</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td bgcolor= '#ffc700'>OA</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -122,17 +133,6 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td bgcolor= '#0082f7'>OC</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -144,7 +144,7 @@
 	<tr>
 		<td>3</td>
 		<td></td>
-		<td></td>
+		<td bgcolor= '#ffc700'>OA</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -197,12 +197,12 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#00d278'>OB</td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#0082f7'>OC</td>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -217,7 +217,7 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#ea449e'>OD</td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -263,7 +263,7 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#00d278'>OB</td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -285,7 +285,6 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#ea449e'>OD</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -299,7 +298,8 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#00d278'>OB</td>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -560,7 +560,7 @@
 		<td></td>
 		<td bgcolor= '#ffc700'>OA</td>
 		<td bgcolor= '#ea449e'>OD</td>
-		<td bgcolor= '#ffc700'>OA</td>
+		<td bgcolor= '#00d278'>OB</td>
 		<td bgcolor= '#00d278'>OB</td>
 		<td></td>
 		<td></td>
@@ -639,7 +639,7 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td bgcolor= '#00d278'>OB</td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
