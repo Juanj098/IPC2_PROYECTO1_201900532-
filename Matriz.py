@@ -183,7 +183,45 @@ class matriz:
             actual = actual.sig
 
 
-
+    def analisis_O(self, x,y):
+        temp = self.search(str(x),str(y))
+        if temp != None:
+            w_i = int(x)-1
+            w_d = int(x)+1
+            w_ar = int(y)-1
+            W_ab = int(y)+1
+            temp_iz = self.search(str(w_i),str(y))
+            temp_der= self.search(str(w_d),str(y))
+            temp_ar = self.search(str(x),str(w_ar))
+            temp_ab = self.search(str(x),str(W_ab))
+            temp_DIS = self.search(str(w_i),str(w_ar))
+            temp_DII = self.search(str(w_i),str(W_ab))
+            temp_DDS = self.search(str(w_d),str(w_ar))
+            temp_DDI = self.search(str(w_d),str(W_ab))
+            if temp_iz != None and temp_der != None:  #izquierda derecha
+                if temp_iz.valor == temp_der.valor:
+                    return "Prospera"
+                else:
+                    return "No prospera"
+            elif temp_ar != None and temp_ab != None: #arriba abajo 
+                if temp_ar.valor == temp_ab.valor:
+                    return "Prospera"
+                else:
+                    return "No prospera"
+            elif temp_DIS != None and temp_DDI != None:
+                if temp_DIS.valor == temp_DDI.valor:
+                    return "Prospera"
+                else:
+                    return "No prospera"
+            elif temp_DDS != None and temp_DII != None:
+                if temp_DDS.valor == temp_DII.valor:
+                    return "Prospera"
+                else:
+                    return "No prosperar"
+            else:
+                return "No prospera"
+        else:
+            return "Organismo no encontrado"
 
 
 

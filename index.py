@@ -96,11 +96,15 @@ os.system('cls')
 
 while opc != "5":
     if opc == "1": #ingresar Doc
-        Doc = input("Ingrese Documento -> ")
-        handler = orga()
-        parser = xml.sax.make_parser()
-        parser.setContentHandler(handler)
-        parser.parse(Doc)
+        try:
+            Doc = input("Ingrese Documento -> ")
+            handler = orga()
+            parser = xml.sax.make_parser()
+            parser.setContentHandler(handler)
+            parser.parse(Doc)
+            os.system('cls')
+        except:
+            print("Error AL INGRESAR DOCUMENTO")
     elif opc =="2": #ver muestras de Doc. forma grafica
         for r in range(len(list_orga)):
             list_orga[r].asigColor(colors[r])
@@ -108,14 +112,38 @@ while opc != "5":
         matriz.graficar(int(xy.get("x")),int(xy.get("y")))
 
     elif opc =="3": #ingresar un nuevo organismo
-        x = input("x -> ")
-        y = input("y -> ")
-        codi = input("Codig -> ")
-        matriz.insertar(x,y,codi)
-        matriz.graficar(int(xy.get("x")),int(xy.get("y")))
-
+        print( '--------------------------')
+        print( '1: ingresar organismo     ')
+        print( '2: imprimir grafica       ')
+        print( '3: menu principal         ')
+        print( '--------------------------')
+        opc2_1 = input("Ingrese opcion: ")
+        while opc2_1 != "3":
+            if opc2_1 == "1":
+                os.system('cls')
+                x = input("x -> ")
+                y = input("y -> ")
+                codi = input("Codig -> ")
+                matriz.insertar(x,y,codi)
+            elif opc2_1 =="2":
+                for r in range(len(list_orga)):
+                    list_orga[r].asigColor(colors[r])
+                matriz.graficar(int(xy.get("x")),int(xy.get("y")))
+                os.system('cls')
+                print("VER DOCUMENTO -MATRIZ.PNG-")
+            else:
+                print("Opcion no disponible")
+            print( '--------------------------')
+            print( '1: ingresar organismo     ')
+            print( '2: imprimir grafica       ')
+            print( '3: menu principal         ')
+            print( '--------------------------')
+            opc2_1 = input("Ingrese opcion: ")
+            os.system('cls')
     elif opc =="4": #Analisis muestras
-        pass
+        x_an = input("X -> ")
+        y_an = input("Y -> ")
+        print(matriz.analisis_O(x_an,y_an))
     elif opc =="5":#salida
         pass
     else:

@@ -55,6 +55,51 @@
                     <columna>3</columna> 
                     <codigoOrganismo>OA</codigoOrganismo> 
                 </celdaViva>
+                 <celdaViva>
+                    <fila>30</fila> 
+                    <columna>30</columna> 
+                    <codigoOrganismo>OC</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>10</fila> 
+                    <columna>15</columna> 
+                    <codigoOrganismo>OB</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>25</fila> 
+                    <columna>29</columna> 
+                    <codigoOrganismo>OB</codigoOrganismo> 
+                </celdaViva>                
+                 <celdaViva>
+                    <fila>13</fila> 
+                    <columna>16</columna> 
+                    <codigoOrganismo>OD</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>19</fila> 
+                    <columna>18</columna> 
+                    <codigoOrganismo>OC</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>20</fila> 
+                    <columna>21</columna> 
+                    <codigoOrganismo>OD</codigoOrganismo> 
+                </celdaViva>
+                 <celdaViva>
+                    <fila>2</fila> 
+                    <columna>22</columna> 
+                    <codigoOrganismo>OA</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>19</fila> 
+                    <columna>5</columna> 
+                    <codigoOrganismo>OC</codigoOrganismo> 
+                </celdaViva>
+                <celdaViva>
+                    <fila>26</fila> 
+                    <columna>23</columna> 
+                    <codigoOrganismo>OD</codigoOrganismo> 
+                </celdaViva>
             </listadoCeldasVivas>
         </muestra>
     </listadoMuestras>
